@@ -1,7 +1,13 @@
 import React from 'react';
+import CustomNavbar from '../../components/Navbar';
 
 const Appointments = () => {
-  return <p>Appointments page</p>;
+  return (
+    <>
+      <CustomNavbar />
+      <p>Appointments page</p>;
+    </>
+  );
 };
 
 export default Appointments;
