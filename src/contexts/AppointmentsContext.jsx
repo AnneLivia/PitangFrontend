@@ -35,6 +35,25 @@ const AppointmentContextProvider = ({ children }) => {
     initialFetch();
   }, []);
 
+  const updateOneItem = (id, key, value) => {
+    // atualizar o state
+    // copiando todos os dados
+    const appoints = [...appointments];
+
+    // obtendo o index em que o item a ser atualizado se encontra
+    const index = appoints.findIndex((appoint) => appoint._id === id);
+
+    // copiando todos os dados desse item especifico, atualizando apenas o value
+    // da key dinamica e colocando o novo objeto na posição correspondente
+    appoints[index] = { ...appoints[index], [key]: value };
+
+    // setando o novo estado
+    setAppointments(appoints);
+
+    // atualizando o localStorage também
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(appoints));
+  };
+
   // quando houver mudança no tamanho do array, significa que houve a inserção de algum dado
   // ou remoção, então ordernar os appointments novamente e inserir os dados ordenados no localStorage
   useEffect(() => {
@@ -56,6 +75,7 @@ const AppointmentContextProvider = ({ children }) => {
       value={{
         appointments,
         setAppointments,
+        updateOneItem,
       }}
     >
       {children}
