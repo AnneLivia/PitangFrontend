@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import vaccineIcon from '../../assets/images/vaccine.png';
+import vaccineNavbar from '../../assets/images/vaccineNavbar.png';
 
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ const CustomNavbar = ({ children }) => {
         <Navbar.Brand>
           <Link to='/'>
             <img
-              src={vaccineIcon}
+              src={vaccineNavbar}
               width={30}
               height={30}
               className='d-inline-block align-top'
