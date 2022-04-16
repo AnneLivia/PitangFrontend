@@ -1,0 +1,17 @@
+.td_style {
+    border-color: #fff;
+}
+
+.custom_datePicker {
+    padding: 3px !important;
+    text-align: center;
+}
+
+.custom_variant {
+    border-color: rgb(194, 194, 194) !important;
+    background-color: rgb(255, 255, 255) !important;
+}
+
+.custom_variant:hover {
+    border-color: rgb(82, 82, 82) !important;
+}
