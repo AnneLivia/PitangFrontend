@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { AppointmentsContext } from '../../../contexts/AppointmentsContext';
 import { Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import { setMinutes, setHours } from 'date-fns';
 import ScheduleDatePicker from '../../../components/DatePicker';
 import axios from '../../../services/api';
 import formatDate from '../../../utils/formatDate';
@@ -14,15 +15,13 @@ import ScheduleSchema from '../../../validators/ScheduleSchema';
 // style
 import './index.css';
 
-const LOCALSTORAGE_KEY = process.env.REACT_APP_LOCALSTORAGE_KEY;
-
 const ScheduleModal = ({ showModal, setShowModal }) => {
-  const { appointments, setAppointments } = useContext(AppointmentsContext);
+  const { insertNewAppointment } = useContext(AppointmentsContext);
 
   const formik = useFormik({
     initialValues: {
       birthDate: new Date('01/01/1990'),
-      dateTimeAppointment: null,
+      dateTimeAppointment: setHours(setMinutes(new Date(), 0), 0),
       name: '',
     },
     validationSchema: ScheduleSchema,
@@ -43,17 +42,8 @@ const ScheduleModal = ({ showModal, setShowModal }) => {
           dateTimeAppointment,
         });
 
-        // inserindo o novo dado
-        setAppointments((oldAppointments) => [
-          ...oldAppointments,
-          response.data,
-        ]);
-
-        // inserindo no localStorage
-        localStorage.setItem(
-          LOCALSTORAGE_KEY,
-          JSON.stringify([...appointments, response.data])
-        );
+        // inserindo o novo dado, tanto no state quanto no localStorage
+        insertNewAppointment(response.data);
 
         toast.success('Agendado com sucesso!');
 
@@ -130,14 +120,14 @@ const ScheduleModal = ({ showModal, setShowModal }) => {
         <Form.Group className='mb-3'>
           <Form.Label>Data e hora de atendimento: </Form.Label>
           <ScheduleDatePicker
-            name='appointmentDate'
+            name='dateTimeAppointment'
             dateFormat='dd/MM/yyyy HH:mm'
             timeFormat='HH:mm'
             minDate={new Date()}
             date={formik.values.dateTimeAppointment}
             onChange={(e) => formik.setFieldValue('dateTimeAppointment', e)}
             showTimeSelect
-            placeholderText='DD/MM/YYYY HH:MM'
+            placeholderText='Selecione uma data e um horário válido'
             className={`form-control ${
               !formik.errors.dateTimeAppointment ? '' : 'is-invalid'
             }`}
