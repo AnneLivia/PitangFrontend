@@ -18,7 +18,7 @@ const AppointmentContextProvider = ({ children }) => {
         .then((response) => {
           setAppointments(response.data);
           // inserir os dados no localStorage para não precisar buscar na API outra vez
-          // somente buscar se os dados no localstorage forem apagados = quando fechar o browser.
+          // somente buscar se os dados no localstorage forem apagados.
           localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(response.data));
         })
         .catch((err) => console.log(err));
@@ -35,6 +35,8 @@ const AppointmentContextProvider = ({ children }) => {
     initialFetch();
   }, []);
 
+  // para atualizar um campo especifico, recebe como parametro, o id do agendamento
+  // o campo para ser atualizado e o valor
   const updateOneItem = (id, key, value) => {
     // atualizar o state
     // copiando todos os dados
@@ -44,18 +46,30 @@ const AppointmentContextProvider = ({ children }) => {
     const index = appoints.findIndex((appoint) => appoint._id === id);
 
     // copiando todos os dados desse item especifico, atualizando apenas o value
-    // da key dinamica e colocando o novo objeto na posição correspondente
+    // da key e colocando o novo objeto na posição correspondente
     appoints[index] = { ...appoints[index], [key]: value };
 
     // setando o novo estado
     setAppointments(appoints);
 
-    // atualizando o localStorage também
+    // atualizando o localStorage também (os dados ficarão ordenados no localStorage)
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(appoints));
   };
 
+  // para inserir um novo dado, tanto no localStorage, quando no state.
+  const insertNewAppointment = (data) => {
+    // copiando todos os dados
+    const appoints = [...appointments];
+
+    // inserindo no localStorage, os dados já inseridos + o novo dado
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify([...appoints, data]));
+
+    // Atualizando o state, inserindo o novo dado
+    setAppointments([...appoints, data]);
+  };
+
   // quando houver mudança no tamanho do array, significa que houve a inserção de algum dado
-  // ou remoção, então ordernar os appointments novamente e inserir os dados ordenados no localStorage
+  // ou remoção, então ordernar os appointments novamente
   useEffect(() => {
     setAppointments((appoint) =>
       appoint.sort((a, b) => {
@@ -76,6 +90,7 @@ const AppointmentContextProvider = ({ children }) => {
         appointments,
         setAppointments,
         updateOneItem,
+        insertNewAppointment,
       }}
     >
       {children}
