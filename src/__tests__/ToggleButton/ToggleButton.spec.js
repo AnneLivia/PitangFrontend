@@ -16,10 +16,10 @@ afterEach(() => {
 describe('ToggleButton Component', () => {
     it('Should render the component without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<CustomToggleButton radioValue='2'/>, div);
+        ReactDOM.render(<CustomToggleButton radioValue='2' setRadioValue={() => {}}/>, div);
     });
     it('Should render the toggle options', () => {
-       render(<CustomToggleButton radioValue='2'/>);
+       render(<CustomToggleButton radioValue='2' setRadioValue={() => {}}/>);
        expect(screen.getByRole('radio', {name: 'Todos'})).toBeInTheDocument();
        expect(screen.getByRole('radio', {name: 'Por Data Selecionada'})).toBeInTheDocument();
     });
