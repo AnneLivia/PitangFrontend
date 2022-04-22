@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+## Pitang Trainee Program
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pitang's final project that aims to create a React and Node.js application to schedule vaccine appointments (Covid-19) and to visualize all of the already scheduled appointments grouped by date and time.
 
-## Available Scripts
+### How to run this project:
+- Download the files
+- Run **yarn** in the terminal to install all dependencies listed within **package.json**
+- Create a **.env** file in the project's root directory and insert the following configurations:
 
-In the project directory, you can run:
+  - **REACT_APP_BASE_URL** = http://localhost:4000/api
+  - **REACT_APP_LOCALSTORAGE_KEY** = schedules
+  
+- Execute the <a href="https://github.com/AnneLivia/PitangBackend">Backend</a>
+- Run **yarn start** to execute the React App (The application runs on http://localhost:3000)
 
-### `yarn start`
+### Some Dependencies (Frontend)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- axios: 0.26.1
+- bootstrap: 5.1.3
+- date-fns: 2.28.0
+- formik: 2.2.9
+- react-bootstrap: 2.2.3
+- react-datepicker: 4.7.0
+- react-icons: 4.3.1
+- react-router-dom: 6.3.0
+- react-toastify: 8.2.0
+- yup: 0.32.11
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Challenge Description
 
-### `yarn test`
+### Rules of use:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Scheduling must be done on one page using a form.
+- Maximum of 20 appointments per day.
+- Maximum of 2 appointments for the same hour.
+- A page must be created to consult the appointments.
+- The result of the appointments must be grouped by day and time.
+- The time interval between one appointment and another is 1 hour.
 
-### `yarn build`
+### Business rules:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The patient must inform his name, date of birth and day and time of the
+appointment.
+- It must be checked if the form has been filled out.
+- Patient data/schedules must be stored in memory.
+- Within the page to consult the schedules, it must be possible to view the list of appointments and inform if the patient was seen or not,
+and what was the conclusion of the appointment.
+- When user press F5 or reload the page the data cannot be lost.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Execution Rules:
+1. Portal written in React (use react-datepicker to manage dates).
+2. Build a Node API to receive data from the portal.
+3. Axios as http client.
+4. Use Formik to validate the data in the view.
+5. IDE is your choice.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Aditional information:
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- <h3>Icons and images: </h3>
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  - **Navbar icon**: downloaded from Flaticon <a href="https://www.flaticon.com/premium-icon/schedule_6064388">icon created by toempong</a>
+  - **Home Page icon**: downloaded from Flaticon <a href="https://www.flaticon.com/premium-icon/vaccine_4190876">icon created by itim2101</a>
+  - **Cancelation of appointment**: downloaded from <a href="https://www.svgrepo.com/svg/286825/cancel">Free SVG</a>
+  - **Conclusion Text**: downloaded from <a href="https://www.svgrepo.com/svg/33550/report">Free SVG</a>
