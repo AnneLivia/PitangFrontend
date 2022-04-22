@@ -216,6 +216,11 @@ const Appointments = () => {
                         <Button
                           onClick={() => handleResultModal(appointment._id)}
                           className='custom_variant'
+                          disabled={
+                            appointment.statusAppointment === 'ATENDIDO'
+                              ? false
+                              : true
+                          }
                         >
                           <img
                             src={report_svg}
@@ -253,7 +258,10 @@ const Appointments = () => {
             <tfoot className='text-center td_style'>
               <tr>
                 <td colSpan={7}>
-                  <FiMoreHorizontal />
+                  <p style={{ fontSize: 14 }}>
+                    O botão de resultado ficará disponível apenas se o status do
+                    agendamento for ATENDIDO.
+                  </p>
                 </td>
               </tr>
               <tr>
