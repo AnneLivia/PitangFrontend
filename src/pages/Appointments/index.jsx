@@ -25,6 +25,7 @@ import axios from '../../services/api';
 
 // icons
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { FiRefreshCcw } from 'react-icons/fi';
 
 import report_svg from '../../assets/images/report.svg';
 import remove_svg from '../../assets/images/remove.svg';
@@ -33,7 +34,8 @@ import remove_svg from '../../assets/images/remove.svg';
 import './index.css';
 
 const Appointments = () => {
-  const { appointments, updateOneItem } = useContext(AppointmentsContext);
+  const { appointments, updateOneItem, refetch } =
+    useContext(AppointmentsContext);
   // para buscar por data, setando o dia atual
   const [date, setDate] = useState(setHours(setMinutes(new Date(), 0), 0));
   // para filtrar por nome
@@ -134,6 +136,16 @@ const Appointments = () => {
                 setRadioValue={setRadioValue}
               />
             </Col>
+            <Col md={2}>
+              <Button
+                variant='outline-primary'
+                className='me-2'
+                size='sm'
+                onClick={refetch}
+              >
+                Recarregar dados <FiRefreshCcw />
+              </Button>
+            </Col>
           </Row>
           <Table bordered hover size='sm' responsive className='mt-3'>
             <thead>
@@ -216,6 +228,11 @@ const Appointments = () => {
                         <Button
                           onClick={() => handleResultModal(appointment._id)}
                           className='custom_variant'
+                          disabled={
+                            appointment.statusAppointment === 'ATENDIDO'
+                              ? false
+                              : true
+                          }
                         >
                           <img
                             src={report_svg}
@@ -253,7 +270,10 @@ const Appointments = () => {
             <tfoot className='text-center td_style'>
               <tr>
                 <td colSpan={7}>
-                  <FiMoreHorizontal />
+                  <p style={{ fontSize: 14 }}>
+                    O botão de resultado ficará disponível apenas se o status do
+                    agendamento for ATENDIDO.
+                  </p>
                 </td>
               </tr>
               <tr>

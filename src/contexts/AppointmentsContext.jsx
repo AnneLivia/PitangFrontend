@@ -68,6 +68,14 @@ const AppointmentContextProvider = ({ children }) => {
     setAppointments([...appoints, data]);
   };
 
+  const refetch = () => {
+    console.log('Buscando os dados novamente através da API');
+    // Removendo o localstorage
+    localStorage.clear();
+    // populando o state appointments e o localStorage novamente.
+    initialFetch();
+  };
+
   // quando houver mudança no tamanho do array, significa que houve a inserção de algum dado
   // ou remoção, então ordernar os appointments novamente
   useEffect(() => {
@@ -91,6 +99,7 @@ const AppointmentContextProvider = ({ children }) => {
         setAppointments,
         updateOneItem,
         insertNewAppointment,
+        refetch,
       }}
     >
       {children}
