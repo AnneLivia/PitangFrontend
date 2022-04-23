@@ -1,17 +1,17 @@
 ## Pitang Trainee Program
 
-Pitang's final project that aims to create a React and Node.js application to schedule vaccine appointments (Covid-19) and to visualize all of the already scheduled appointments grouped by date and time.
+Pitang's final project that aims to create a React and Node.js application to schedule vaccine appointments (Covid-19) and to visualize all the already scheduled appointments grouped by date and time.
 
 ### How to run this project:
-- Download the files
-- Run **yarn** in the terminal to install all dependencies listed within **package.json**
-- Create a **.env** file in the project's root directory and insert the following configurations:
+1. Download the files or clone this repository
+2. Run **yarn install** or simply **yarn** in the terminal to install all dependencies listed within **package.json**
+3. Create a **.env** file in the project's root directory and insert the following configurations:
 
-  - **REACT_APP_BASE_URL** = http://localhost:4000/api
-  - **REACT_APP_LOCALSTORAGE_KEY** = schedules
+   - **REACT_APP_BASE_URL** = http://localhost:4000/api
+   - **REACT_APP_LOCALSTORAGE_KEY** = schedules
   
-- Execute the <a href="https://github.com/AnneLivia/PitangBackend">Backend</a>
-- Run **yarn start** to execute the React App (The application runs on http://localhost:3000)
+4. Execute the <a href="https://github.com/AnneLivia/PitangBackend">Backend</a>
+5. Run **yarn start** to execute the React App (The application runs on http://localhost:3000)
 
 ### Some Dependencies (Frontend)
 
@@ -54,7 +54,17 @@ and what was the conclusion of the appointment.
 4. Use Formik to validate the data in the view.
 5. IDE is your choice.
 
-## Aditional information:
+## Demonstration:
+
+### Home page
+
+https://user-images.githubusercontent.com/31932673/164936287-114d00df-feca-4419-bf49-4c6fa98a5973.mp4
+
+### Appointments page
+
+https://user-images.githubusercontent.com/31932673/164937894-524158d9-4dba-4b77-8487-1be2bb1ff3c0.mp4
+
+## Additional information:
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 - <h3>Icons and images: </h3>
 
@@ -62,3 +72,5 @@ and what was the conclusion of the appointment.
   - **Home Page icon**: downloaded from Flaticon <a href="https://www.flaticon.com/premium-icon/vaccine_4190876">icon created by itim2101</a>
   - **Cancelation of appointment**: downloaded from <a href="https://www.svgrepo.com/svg/286825/cancel">Free SVG</a>
   - **Conclusion Text**: downloaded from <a href="https://www.svgrepo.com/svg/33550/report">Free SVG</a>
+<br/>
+<p align="center">© Developed by Anne Livia</p>
