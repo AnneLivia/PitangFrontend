@@ -128,6 +128,7 @@ const Appointments = () => {
                 date={date}
                 onChange={(e) => setDate(e)}
                 dateFormat='dd/MM/yyyy'
+                placeholderText='Selecione a data'
               />
             </Col>
             <Col>
@@ -174,16 +175,18 @@ const Appointments = () => {
                     appoint.dateTimeAppointment
                   );
 
-                  const selectedSearchByDate = formatDate(date);
+                  const selectedSearchByDate = date
+                    ? formatDate(date)
+                    : undefined;
 
                   // se a data nao corresponder a selecionada, mas o radioValue for 2, nao exibirá nada
                   // se a data corresponder ou nao e o radiovalue for 1, exibirá tudo.
 
                   // é para exibir apenas os agendamentos para a data selecionada
-                  if (radioValue === '2')
+                  if (radioValue === '2' && selectedSearchByDate)
                     return dateAppointment === selectedSearchByDate;
 
-                  // se radioValue não for '2', retorna tudo
+                  // se radioValue não for '2' ou não existe data, retorna tudo
                   return appoint;
                 })
                 .map((appointment, index) => {
